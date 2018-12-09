@@ -1,0 +1,18 @@
+@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
+
+#quote-box {
+    width: $width;
+    min-height: $width;
+    border: solid 4px $blue;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.Border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $border;
+}
