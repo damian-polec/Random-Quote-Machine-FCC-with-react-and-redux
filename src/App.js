@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import QuoteBox from './components/QuoteBox/quoteBox';
+import * as actionCreators from './store/actionsCreators';
 import './App.scss';
 
 library.add(faQuoteRight, faTwitter);
 
 class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      quote: '',
-      author: '',
-    }
-    this.onGetQuoteHandler = this.onGetQuoteHandler.bind(this);
-  }
+
   componentDidMount() {
-    this.onGetQuoteHandler();
+    this.props.onGetQuoteHandler();
   }
-  onGetQuoteHandler() {
+  /*onGetQuoteHandler() {
     const quoteText = document.getElementById('quote');
     quoteText.classList.add('action');
     fetch('https://talaikis.com/api/quotes/random/')
@@ -37,18 +32,31 @@ class App extends Component {
           quoteText.classList.remove('action')
         }
       })
-  }
+} */
 
   render() {
     return (
       <div className="App">
         <QuoteBox 
-          getQuote={this.onGetQuoteHandler}
-          quoteText={this.state.quote}
-          quoteAuthor={this.state.author}/>
+          getQuote={this.props.onGetQuoteHandler}
+          quoteText={this.props.quote}
+          quoteAuthor={this.props.author}/>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    quote: state.quote,
+    author: state.author
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetQuoteHandler: () => dispatch(actionCreators.fetchQuote())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
