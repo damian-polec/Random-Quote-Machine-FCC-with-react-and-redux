@@ -3,16 +3,33 @@
 
 #quote-box {
     width: $width;
-    min-height: $width;
-    border: solid 4px $blue;
+    height: $width;
     border-radius: 50%;
     margin: 0 auto;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vmin;
+    font-size: 3.5vmin;
+    text-shadow: 1px 1px 25px #000;
+    background: $background; 
+    color: $background;
+    box-shadow: 
+        inset $x-offset (-$y-offset) $shadow-blur $shadow-spread $red,
+        inset (-$x-offset) (-$y-offset) $shadow-blur $shadow-spread $orange,
+        inset 0 $shadow-depth $shadow-blur $shadow-spread $yellow,
+        inset (-$x-offset) $y-offset $shadow-blur $shadow-spread $green,
+        inset $x-offset $y-offset $shadow-blur $shadow-spread $blue,
+        inset 0 (-$shadow-depth) $shadow-blur $shadow-spread $purple,
+        -5px 0 10px 0 rgba(161,153,161,1),
+        5px 0 10px 0 rgba(161,153,161,1);
 }
 
-.Border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $border;
+#quote {
+    transition: all 0.3s ease;
+}
+
+.action {
+    opacity: 0
 }

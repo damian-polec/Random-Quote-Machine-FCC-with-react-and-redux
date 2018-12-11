@@ -1,2 +1,21 @@
-$width: 50vw;
-$border: $width;
+$width: 75vmin;
+
+
+$shadow-depth: $width * .125;
+$shadow-blur: 3vmin;
+$shadow-spread: -4vmin;
+
+$y-offset: $shadow-depth * .5;
+$x-offset: $y-offset * 1.7320508076;
+
+$shadow-spread-click: 4vmin;
+
+$background: #F5FFFA;
+
+$red:    rgba(255,   0,   0, .45);
+$orange: rgba(253, 127,  11, .54);
+$yellow: rgba(235, 255,   0, .54);
+$green:  rgba( 22, 243,   3, .55);
+$blue:   rgba(  0, 133, 255, .53);
+$purple: rgba(190,  11, 224, .55);
+$shadow: rgba(161,153,161,1);
